@@ -1,0 +1,20 @@
+ function getDate()
+            {
+                var d = new Date();
+                var year = d.getFullYear();
+                var month = d.getMonth() + 1;
+                var day = d.getDate();
+                var date = year + '/' + month + '/' + day;
+                var hours = formatTwoDigits(d.getHours());
+                var minutes = formatTwoDigits(d.getMinutes());
+                var seconds = formatTwoDigits(d.getSeconds());
+                return date + ' ' + hours + ":" + minutes + ":" + seconds;
+            }
+
+            function formatTwoDigits(n)
+            {
+                return n < 10 ? '0' + n : n;
+            }
+			
+			//call it as:
+			entry.CreatedAt = getDate();

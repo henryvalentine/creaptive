@@ -1,0 +1,23 @@
+const ReactDomServer = require('react-dom/server');
+const assert = require('chai').assert;
+const esc = require('escape-html');
+const toMarkup = ReactDomServer.renderToStaticMarkup;
+const toString = ReactDomServer.renderToString;
+const create = React.createElement;
+
+describe('Notification', () => {
+    const message = "Hello World!";
+    let el = create(App, { button: { message } });
+    console.log('Rendering:<br/>' + toString(el));
+    console.log('Actual Markup:<br/>' + esc(toMarkup(el)));
+    it('should be a button', function() {
+        const message = "Hello World!";
+		let el = create(App, { button: { message } });
+        assert.include(toMarkup(el), '<button');
+	});
+	it('should render the message passed in', function() {
+        const message = "Hello World!";
+		let el = create(App, { button: { message } });
+        assert.include(toMarkup(el), message);
+	});
+});
